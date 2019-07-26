@@ -8,14 +8,14 @@ export class TodosService {
 
     private database: TodosResponse = {
         data: [
-            { id: '99', description: 'Rake Leaves', completed: true },
+            { id: '99', description: 'Drink Beer', completed: false },
             { id: '385', description: 'Clean Steps', completed: false },
             { id: '98', description: 'Build Shed', completed: false },
         ],
     };
 
     getAllData() {
-        return of(this.database).pipe(delay(2500));
+        return of(this.database).pipe(delay(100));
     }
 
     removeTodo(id: string) {

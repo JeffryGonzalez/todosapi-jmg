@@ -13,14 +13,19 @@ export class TodosController {
     }
 
     @Delete(':id')
-    @HttpCode(204)
-    delete(@Param() params) {
-        this.service.removeTodo(params.id);
+    deleteTodo(@Param() params, @Res() res) {
+        if (params.id === '99') {
+            res.status(400).send('You must always drink beer');
+        } else {
+            this.service.removeTodo(params.id);
+            res.status(200).send();
+        }
     }
 
     @Put('completed/:id')
     markComplete(@Param() params, @Res() response) {
         // return 'ok';
+
         const result = this.service.markComplete(params.id);
         // return result ? response.status(200) : response.status(404);
         if (result) {
